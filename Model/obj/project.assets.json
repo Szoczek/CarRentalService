@@ -688,23 +688,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ja\\.nuget\\packages\\": {},
+    "C:\\Users\\Ja\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Google\\Dysk Google (Szymon,Zoczek2@gmail.com)\\Projekty\\DotNetCore\\CarRentalService\\Model\\Model.csproj",
+      "projectUniqueName": "C:\\Users\\Ja\\Dysk Google (szymon.zoczek2@gmail.com)\\Projekty\\WebAPI\\CarRentalService\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "E:\\Google\\Dysk Google (Szymon,Zoczek2@gmail.com)\\Projekty\\DotNetCore\\CarRentalService\\Model\\Model.csproj",
-      "packagesPath": "C:\\Users\\ja\\.nuget\\packages\\",
-      "outputPath": "E:\\Google\\Dysk Google (Szymon,Zoczek2@gmail.com)\\Projekty\\DotNetCore\\CarRentalService\\Model\\obj\\",
+      "projectPath": "C:\\Users\\Ja\\Dysk Google (szymon.zoczek2@gmail.com)\\Projekty\\WebAPI\\CarRentalService\\Model\\Model.csproj",
+      "packagesPath": "C:\\Users\\Ja\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ja\\Dysk Google (szymon.zoczek2@gmail.com)\\Projekty\\WebAPI\\CarRentalService\\Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ja\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

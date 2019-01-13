@@ -11,6 +11,7 @@ namespace WebApi.DataModel
         public string LastName { get; set; }
         public int Age { get; set; }
         public UserTypes UserType { get; set; }
+        public bool IsAdmin { get; set; }
 
         public UserData InitFrom(User user)
         {
@@ -20,6 +21,7 @@ namespace WebApi.DataModel
             this.LastName = user.LastName;
             this.Age = user.Age;
             this.UserType = user.UserType;
+            this.IsAdmin = user.IsAdmin;
 
             return this;
         }
@@ -32,6 +34,8 @@ namespace WebApi.DataModel
             user.LastName = this.LastName;
             user.Age = this.Age;
             user.UserType = this.UserType;
+            user.IsAdmin = this.IsAdmin;
+
             return user;
         }
 

@@ -9,6 +9,7 @@ namespace Model
     public class Car
     {
         public int Oid { get; set; }
+        public Guid CarGuid { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
         public BodyTypes BodyType { get; set; }
@@ -21,12 +22,12 @@ namespace Model
         public DateTime ProductionDate { get; set; }
         public double PriceNet { get; set; }
         public double PriceGross { get; set; }
-        public User Rentant { get; set; } = null;
 
         public Car(int oid, string brand, string model, BodyTypes bodyType, EngineTypes engineType, double engineVolume, int engineHp,
-            Color color, int numberOfDoors, double priceNet, double priceGross, User rentant, DateTime productionDate, string vinNumber = "")
+            Color color, int numberOfDoors, double priceNet, double priceGross, DateTime productionDate, string vinNumber = "")
         {
             this.Oid = oid;
+            this.CarGuid = Guid.NewGuid();
             this.Brand = brand;
             this.Model = model;
             this.EngineVolume = engineVolume;
@@ -37,7 +38,6 @@ namespace Model
             this.NumberOfDoors = numberOfDoors;
             this.PriceNet = priceNet;
             this.PriceGross = priceGross;
-            this.Rentant = rentant;
             this.ProductionDate = productionDate;
             this.VinNumber = vinNumber == "" ? Utils.CarUtils.GenerateVinNumber() : vinNumber;
         }

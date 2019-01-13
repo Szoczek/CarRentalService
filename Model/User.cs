@@ -10,9 +10,10 @@ namespace Model
         public string LastName { get; set; }
         public int Age { get; set; }
         public UserTypes UserType { get; set; }
+        public bool IsAdmin { get; set; }
 
-        public User() { };
-        public User(int oid, string firstName, string lastName, int age, UserTypes userType)
+        public User(int oid, string firstName, string lastName, int age,
+            UserTypes userType = UserTypes.Individual, bool isAdmin = false)
         {
             this.Guid = Guid.NewGuid();
             this.Oid = oid;
@@ -20,12 +21,13 @@ namespace Model
             this.LastName = lastName;
             this.Age = age;
             this.UserType = userType;
+            this.IsAdmin = isAdmin;
         }
     }
 
     public enum UserTypes
     {
-        Indyvidual,
+        Individual,
         Business
     }
 }
