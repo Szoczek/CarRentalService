@@ -1,0 +1,15 @@
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.csproj.CoreCompileInputs.cache
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfoInputs.cache
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfo.cs
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\WebApi.deps.json
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.json
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.dev.json
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\WebApi.dll
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.csprojAssemblyReference.cache
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cache
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cs
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorTargetAssemblyInfo.cache
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\WebApi.pdb
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.dll
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.pdb

@@ -1,0 +1,6 @@
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\Infrastructure\bin\Debug\netcoreapp2.1\Infrastructure.deps.json
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\Infrastructure\bin\Debug\netcoreapp2.1\Infrastructure.dll
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.csprojAssemblyReference.cache
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.csproj.CoreCompileInputs.cache
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.AssemblyInfoInputs.cache
+E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.AssemblyInfo.cs
