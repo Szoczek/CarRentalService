@@ -12,6 +12,8 @@ namespace Model
         public UserTypes UserType { get; set; }
         public bool IsAdmin { get; set; }
 
+        public User() { }
+
         public User(int oid, string firstName, string lastName, int age,
             UserTypes userType = UserTypes.Individual, bool isAdmin = false)
         {
@@ -27,7 +29,7 @@ namespace Model
 
     public enum UserTypes
     {
-        Individual,
-        Business
+        Individual = 1,
+        Business = 2
     }
 }

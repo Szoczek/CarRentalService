@@ -694,11 +694,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ja\\Dysk Google (szymon.zoczek2@gmail.com)\\Projekty\\WebAPI\\CarRentalService\\Model\\Model.csproj",
+      "projectUniqueName": "D:\\PROJEKTY\\CarRentalService\\CarRentalService\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "C:\\Users\\Ja\\Dysk Google (szymon.zoczek2@gmail.com)\\Projekty\\WebAPI\\CarRentalService\\Model\\Model.csproj",
+      "projectPath": "D:\\PROJEKTY\\CarRentalService\\CarRentalService\\Model\\Model.csproj",
       "packagesPath": "C:\\Users\\Ja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ja\\Dysk Google (szymon.zoczek2@gmail.com)\\Projekty\\WebAPI\\CarRentalService\\Model\\obj\\",
+      "outputPath": "D:\\PROJEKTY\\CarRentalService\\CarRentalService\\Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

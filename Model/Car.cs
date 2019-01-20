@@ -22,11 +22,12 @@ namespace Model
         public DateTime ProductionDate { get; set; }
         public double PriceNet { get; set; }
         public double PriceGross { get; set; }
+        public bool IsRented { get; set; }
 
-        public Car(int oid, string brand, string model, BodyTypes bodyType, EngineTypes engineType, double engineVolume, int engineHp,
-            Color color, int numberOfDoors, double priceNet, double priceGross, DateTime productionDate, string vinNumber = "")
+        public Car(string brand, string model, BodyTypes bodyType, EngineTypes engineType, double engineVolume, int engineHp,
+            Color color, int numberOfDoors, double priceNet, double priceGross, DateTime productionDate, string vinNumber = "",
+            bool isRented = false)
         {
-            this.Oid = oid;
             this.CarGuid = Guid.NewGuid();
             this.Brand = brand;
             this.Model = model;
@@ -40,6 +41,7 @@ namespace Model
             this.PriceGross = priceGross;
             this.ProductionDate = productionDate;
             this.VinNumber = vinNumber == "" ? Utils.CarUtils.GenerateVinNumber() : vinNumber;
+            this.IsRented = isRented;
         }
     }
 
@@ -47,17 +49,17 @@ namespace Model
     {
         Hatchback,
         Sedan,
-        SUV,
+        Suv,
         Crossover,
         Coupe,
         Convertible,
-        MPV
+        Mpv
     }
 
     public enum EngineTypes
     {
         Gasoline,
-        GasolineLPG,
+        GasolineLpg,
         Diesel,
         Electric,
         Hybrid

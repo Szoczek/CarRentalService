@@ -16,17 +16,17 @@ namespace WebApi.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly DatabaseContext databaseContext;
+        private readonly DatabaseContext _databaseContext;
 
         public UserController()
         {
-            databaseContext = new DatabaseContext();
+            _databaseContext = new DatabaseContext();
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserData>>> GetUsers()
         {
-            var query = databaseContext.GetCollection<User>();
+            var query = _databaseContext.GetCollection<User>();
             List<UserData> users = new List<UserData>();
             UserData user = new UserData();
 
@@ -38,7 +38,7 @@ namespace WebApi.Controllers
         [HttpGet("{id: int}")]
         public async Task<ActionResult<UserData>> GetUser(int id)
         {
-            var query = databaseContext.GetCollection<User>().
+            var query = _databaseContext.GetCollection<User>().
                 AsQueryable()
                 .FirstOrDefault(x => x.Oid == id);
 
@@ -52,14 +52,14 @@ namespace WebApi.Controllers
         {
             userData.Guid = Guid.NewGuid();
             User user = new User();
-            await Task.FromResult(databaseContext.GetCollection<User>().InsertOneAsync(userData.CopyTo(user)));
+            await Task.FromResult(_databaseContext.GetCollection<User>().InsertOneAsync(userData.CopyTo(user)));
         }
 
         [HttpDelete("{id: int}")]
         public async void DeleteUser(int id)
         {
             var filter = Builders<User>.Filter.Where(x => x.Oid == id);
-            await Task.FromResult(databaseContext.GetCollection<User>().DeleteOneAsync(filter));
+            await Task.FromResult(_databaseContext.GetCollection<User>().DeleteOneAsync(filter));
         }
     }
 }

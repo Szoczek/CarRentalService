@@ -29,10 +29,11 @@ namespace Model.Utils
             do
             {
                 res = (char)random.Next(48, 91);
-                resGood = res != ':' ? res != ';' ? res != '<' ? res != '=' ? res != '>' ? res != '?' ? res != '@'
-                    ? true : false : false : false : false : false : false : false;
+                resGood = res != ':' && res != ';' && res != '<' && res != '=' && res != '>' && res != '?' && res != '@'
+                    ? true
+                    : false;
 
-            } while (resGood);
+            } while (!resGood);
 
             return res;
         }
