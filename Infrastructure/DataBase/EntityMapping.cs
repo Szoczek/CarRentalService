@@ -11,14 +11,21 @@ namespace Infrastructure.Database
             {
                 x.AutoMap();
                 x.SetIgnoreExtraElements(true);
-                x.MapIdMember(y => y.getOid());
+                x.MapIdMember(y => y.UserGuid);
             });
 
             BsonClassMap.RegisterClassMap<Car>(x =>
             {
                 x.AutoMap();
                 x.SetIgnoreExtraElements(true);
-                x.MapIdMember(y => y.getOid());
+                x.MapIdMember(y => y.CarGuid);
+            });
+
+            BsonClassMap.RegisterClassMap<Document>(x =>
+            {
+                x.AutoMap();
+                x.SetIgnoreExtraElements(true);
+                x.MapIdMember(y => y.DocumentGuid);
             });
         }
     }

@@ -8,7 +8,6 @@ namespace Model
 {
     public class Car
     {
-        public int Oid { get; set; }
         public Guid CarGuid { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
@@ -47,21 +46,21 @@ namespace Model
 
     public enum BodyTypes
     {
-        Hatchback,
-        Sedan,
-        Suv,
-        Crossover,
-        Coupe,
-        Convertible,
-        Mpv
+        Hatchback = 1,
+        Sedan = 2,
+        Suv = 3,
+        Crossover = 4,
+        Coupe = 5,
+        Convertible = 6,
+        Mpv = 7
     }
 
     public enum EngineTypes
     {
-        Gasoline,
-        GasolineLpg,
-        Diesel,
-        Electric,
-        Hybrid
+        Gasoline = 1,
+        GasolineLpg = 2,
+        Diesel = 3,
+        Electric = 4,
+        Hybrid = 5
     }
 }

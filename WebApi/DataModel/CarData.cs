@@ -9,12 +9,11 @@ namespace WebApi.DataModel
 {
     public class CarData
     {
-        public int Oid { get; set; }
         public string CarGuid { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
-        public int BodyTypeOid { get; set; }
-        public int EngineTypeOid { get; set; }
+        public int BodyTypeId { get; set; }
+        public int EngineTypeId { get; set; }
         public double EngineVolume { get; set; }
         public int EngineHp { get; set; }
         public int ColorInt { get; set; }
@@ -27,12 +26,11 @@ namespace WebApi.DataModel
 
         public CarData InitFrom(Car car)
         {
-            this.Oid = car.Oid;
             this.CarGuid = car.CarGuid.ToString();
             this.Brand = car.Brand;
             this.Model = car.Model;
-            this.BodyTypeOid = (int)car.BodyType;
-            this.EngineTypeOid = (int)car.EngineType;
+            this.BodyTypeId = (int)car.BodyType;
+            this.EngineTypeId = (int)car.EngineType;
             this.EngineVolume = car.EngineVolume;
             this.EngineHp = car.EngineHp;
             this.ColorInt = car.Color.ToArgb();
@@ -48,12 +46,11 @@ namespace WebApi.DataModel
 
         public Car CopyTo(Car car)
         {
-            car.Oid = this.Oid;
             car.CarGuid = Guid.Parse(this.CarGuid);
             car.Brand = this.Brand;
             car.Model = this.Model;
-            car.BodyType = (BodyTypes)this.BodyTypeOid;
-            car.EngineType = (EngineTypes)this.EngineTypeOid;
+            car.BodyType = (BodyTypes)this.BodyTypeId;
+            car.EngineType = (EngineTypes)this.EngineTypeId;
             car.EngineVolume = this.EngineVolume;
             car.EngineHp = this.EngineHp;
             car.Color = Color.FromArgb(this.ColorInt);

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Infrastructure.Database;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Model;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using WebApi.DataModel;
 
 namespace WebApi.Controllers
@@ -26,40 +26,98 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserData>>> GetUsers()
         {
-            var query = _databaseContext.GetCollection<User>();
-            List<UserData> users = new List<UserData>();
-            UserData user = new UserData();
+            IMongoCollection<User> query;
+            try
+            {
+                 query = _databaseContext.GetCollection<User>();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            var users = new List<UserData>();
+            var user = new UserData();
 
-            await Task.FromResult(query.AsQueryable().ForEachAsync(x => users.Add(user.InitFrom(x))));
+            try
+            {
+                await Task.FromResult(IAsyncCursorSourceExtensions
+                    .ForEachAsync(query.AsQueryable(), x => users.Add(user.InitFrom(x))));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
 
             return users;
         }
 
-        [HttpGet("{id: int}")]
-        public async Task<ActionResult<UserData>> GetUser(int id)
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<UserData>> GetUser(Guid guid)
         {
-            var query = _databaseContext.GetCollection<User>().
-                AsQueryable()
-                .FirstOrDefault(x => x.Oid == id);
+            if (guid == Guid.Empty)
+                return BadRequest("Guid must not be empty");
 
-            UserData user = new UserData();
+            User query;
+            try
+            {
+                query = await _databaseContext.GetCollection<User>().
+                        AsQueryable()
+                        .FirstOrDefaultAsync(x => x.UserGuid == guid);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            if (query == null)
+                return BadRequest("No such user");
+            var user = new UserData();
 
             return await Task.FromResult(user.InitFrom(query));
         }
 
         [HttpPost]
-        public async void PostUser([FromBody] UserData userData)
+        public async Task<IActionResult> PostUser([FromBody] UserData userData)
         {
-            userData.Guid = Guid.NewGuid();
-            User user = new User();
-            await Task.FromResult(_databaseContext.GetCollection<User>().InsertOneAsync(userData.CopyTo(user)));
+            if (userData == null)
+                return BadRequest("User data must not be empty");
+
+            userData.Guid = Guid.NewGuid().ToString();
+            var user = new User();
+            try
+            {
+                await Task.FromResult(_databaseContext.GetCollection<User>()
+                    .InsertOneAsync(userData.CopyTo(user)));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok($"User {user.FirstName} {user.LastName} has been created");
         }
 
-        [HttpDelete("{id: int}")]
-        public async void DeleteUser(int id)
+        [HttpDelete("{guid:Guid}")]
+        public async Task<IActionResult> DeleteUser(Guid guid)
         {
-            var filter = Builders<User>.Filter.Where(x => x.Oid == id);
-            await Task.FromResult(_databaseContext.GetCollection<User>().DeleteOneAsync(filter));
+            if (guid == Guid.Empty)
+                return BadRequest("Guid must not be empty");
+
+            var filter = Builders<User>.Filter.Where(x => x.UserGuid.Equals(guid));
+            if (filter == null)
+                return BadRequest("No such user");
+
+            try
+            {
+                await Task.FromResult(_databaseContext.GetCollection<User>()
+                    .DeleteOneAsync(filter));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok($"User with guid = {guid} has been deleted");
         }
     }
 }

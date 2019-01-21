@@ -13,3 +13,23 @@ E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalSe
 E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.dll
 E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.pdb
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.csprojAssemblyReference.cache
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.csproj.CoreCompileInputs.cache
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cache
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cs
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfoInputs.cache
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfo.cs
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.dll
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.pdb
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\WebApi.deps.json
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.json
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.dev.json
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\WebApi.dll
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\WebApi.pdb
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\Infrastructure.dll
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\Model.dll
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\Infrastructure.pdb
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\bin\Debug\netcoreapp2.1\Model.pdb
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorTargetAssemblyInfo.cache
+D:\PROJEKTY\CarRentalService\CarRentalService\WebApi\obj\Debug\netcoreapp2.1\WebApi.csproj.CopyComplete

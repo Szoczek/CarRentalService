@@ -4,3 +4,15 @@ E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalSe
 E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.csproj.CoreCompileInputs.cache
 E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.AssemblyInfoInputs.cache
 E:\Google\Dysk Google (Szymon,Zoczek2@gmail.com)\Projekty\DotNetCore\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.AssemblyInfo.cs
+D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.csprojAssemblyReference.cache
+D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.csproj.CoreCompileInputs.cache
+D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.AssemblyInfoInputs.cache
+D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.AssemblyInfo.cs
+D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\bin\Debug\netcoreapp2.1\Infrastructure.deps.json
+D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\bin\Debug\netcoreapp2.1\Infrastructure.dll
+D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\bin\Debug\netcoreapp2.1\Infrastructure.pdb
+D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\bin\Debug\netcoreapp2.1\Model.dll
+D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\bin\Debug\netcoreapp2.1\Model.pdb
+D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.csproj.CopyComplete
+D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.dll
+D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.pdb

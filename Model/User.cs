@@ -4,8 +4,7 @@ namespace Model
 {
     public class User
     {
-        public Guid Guid { get; set; }
-        public int Oid { get; set; }
+        public Guid UserGuid { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
@@ -14,11 +13,10 @@ namespace Model
 
         public User() { }
 
-        public User(int oid, string firstName, string lastName, int age,
+        public User(string firstName, string lastName, int age,
             UserTypes userType = UserTypes.Individual, bool isAdmin = false)
         {
-            this.Guid = Guid.NewGuid();
-            this.Oid = oid;
+            this.UserGuid = Guid.NewGuid();
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Age = age;
