@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Model;
 
@@ -8,23 +7,32 @@ namespace WebApi.DataModel
 {
     public class DocumentData
     {
-        public string DocumentGuid { get; set; }
-        public int UserId { get; set; }
-        public int DocumentTypeOid { get; set; }
-        public IEnumerable<int> RentedCarsId { get; set; }
+        public Guid Id { get; set; }
+        public User User { get; set; }
+        public DocumentTypes DocumentType { get; set; }
+        public IEnumerable<Car> RentedCars { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
 
+        public DocumentData InitFrom(Task<Document> document)
+        {
+            this.Id = document.Result.Id;
+            this.User = document.Result.User;
+            this.DocumentType = document.Result.DocumentType;
+            this.RentedCars = document.Result.RentedCars; 
+            this.StartDate = document.Result.StartDate;
+            this.EndDate = document.Result.EndDate;
+
+            return this;
+        }
+
         public DocumentData InitFrom(Document document)
         {
-            this.DocumentGuid = document.DocumentGuid.ToString();
-            this.UserId = document.User.Id;
-            this.DocumentTypeOid = (int)document.DocumentType;
-            foreach (var rentedCar in document.RentedCars)
-            {
-                RentedCarsId.Append(rentedCar.Id);
-            }
+            this.Id = document.Id;
+            this.User = document.User;
+            this.DocumentType = document.DocumentType;
+            this.RentedCars = document.RentedCars;
             this.StartDate = document.StartDate;
             this.EndDate = document.EndDate;
 
@@ -33,7 +41,10 @@ namespace WebApi.DataModel
 
         public Document CopyTo(Document document)
         {
-            document.DocumentGuid = Guid.Parse(this.DocumentGuid);
+            document.Id = this.Id;
+            document.User = this.User;
+            document.DocumentType = this.DocumentType;
+            document.RentedCars = this.RentedCars;
             document.StartDate = this.StartDate;
             document.EndDate = this.EndDate;
 

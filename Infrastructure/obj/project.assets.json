@@ -1555,6 +1555,9 @@
       "Model/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "MongoDB.Driver": "2.7.2"
+        },
         "compile": {
           "bin/placeholder/Model.dll": {}
         },

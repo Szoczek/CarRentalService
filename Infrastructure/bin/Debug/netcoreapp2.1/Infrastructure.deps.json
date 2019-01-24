@@ -911,6 +911,9 @@
         }
       },
       "Model/1.0.0": {
+        "dependencies": {
+          "MongoDB.Driver": "2.7.2"
+        },
         "runtime": {
           "Model.dll": {}
         }

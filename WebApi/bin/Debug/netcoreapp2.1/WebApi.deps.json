@@ -30,7 +30,8 @@
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.1.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1",
-          "Model": "1.0.0"
+          "Model": "1.0.0",
+          "MongoDB.Driver": "2.7.2"
         },
         "runtime": {
           "WebApi.dll": {}
@@ -907,6 +908,9 @@
         }
       },
       "Model/1.0.0": {
+        "dependencies": {
+          "MongoDB.Driver": "2.7.2"
+        },
         "runtime": {
           "Model.dll": {}
         },

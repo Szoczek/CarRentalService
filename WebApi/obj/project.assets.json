@@ -5093,6 +5093,9 @@
       "Model/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
+        "dependencies": {
+          "MongoDB.Driver": "2.7.2"
+        },
         "compile": {
           "bin/placeholder/Model.dll": {}
         },
@@ -13749,7 +13752,8 @@
       "Microsoft.NETCore.App >= 2.1.0",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.1.1",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.1",
-      "Model >= 1.0.0"
+      "Model >= 1.0.0",
+      "MongoDB.Driver >= 2.7.2"
     ]
   },
   "packageFolders": {
@@ -13823,6 +13827,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[2.1.1, )"
+          },
+          "MongoDB.Driver": {
+            "target": "Package",
+            "version": "[2.7.2, )"
           }
         },
         "imports": [

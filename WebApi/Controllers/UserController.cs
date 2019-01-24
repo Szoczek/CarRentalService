@@ -26,43 +26,45 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserData>>> GetUsers()
         {
-            IMongoCollection<User> query;
+            IMongoQueryable<User> query;
             try
             {
-                 query = _databaseContext.GetCollection<User>();
+                query = _databaseContext.GetCollection<User>().AsQueryable();
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            var users = new List<UserData>();
-            var user = new UserData();
-
+            List<UserData> users = new List<UserData>();
             try
             {
-                await Task.FromResult(IAsyncCursorSourceExtensions
-                    .ForEachAsync(query.AsQueryable(), x => users.Add(user.InitFrom(x))));
+                //await Task.FromResult(IAsyncCursorSourceExtensions
+                //   .ForEachAsync(query, x => users.Add(new UserData().InitFrom(x))));
+                foreach (var user in query)
+                {
+                    users.Add(new UserData().InitFrom(user));
+                }
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
 
-            return users;
+            return await Task.FromResult(users);
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<UserData>> GetUser(Guid guid)
+        [HttpGet("{id:Guid}")]
+        public async Task<ActionResult<UserData>> GetUser(Guid id)
         {
-            if (guid == Guid.Empty)
-                return BadRequest("Guid must not be empty");
+            if (id == Guid.Empty)
+                return BadRequest("Id must not be empty");
 
             User query;
             try
             {
-                query = await _databaseContext.GetCollection<User>().
-                        AsQueryable()
-                        .FirstOrDefaultAsync(x => x.UserGuid == guid);
+                query = await _databaseContext.GetCollection<User>()
+                        .AsQueryable()
+                        .FirstOrDefaultAsync(x => x.Id.Equals(id));
             }
             catch (Exception e)
             {
@@ -82,7 +84,7 @@ namespace WebApi.Controllers
             if (userData == null)
                 return BadRequest("User data must not be empty");
 
-            userData.Guid = Guid.NewGuid().ToString();
+            userData.Id = Guid.NewGuid();
             var user = new User();
             try
             {
@@ -97,13 +99,13 @@ namespace WebApi.Controllers
             return Ok($"User {user.FirstName} {user.LastName} has been created");
         }
 
-        [HttpDelete("{guid:Guid}")]
-        public async Task<IActionResult> DeleteUser(Guid guid)
+        [HttpDelete("{id:Guid}")]
+        public async Task<IActionResult> DeleteUser(Guid id)
         {
-            if (guid == Guid.Empty)
-                return BadRequest("Guid must not be empty");
+            if (id == Guid.Empty)
+                return BadRequest("Id must not be empty");
 
-            var filter = Builders<User>.Filter.Where(x => x.UserGuid.Equals(guid));
+            var filter = Builders<User>.Filter.Where(x => x.Id.Equals(id));
             if (filter == null)
                 return BadRequest("No such user");
 
@@ -117,7 +119,7 @@ namespace WebApi.Controllers
                 return BadRequest(e.Message);
             }
 
-            return Ok($"User with guid = {guid} has been deleted");
+            return Ok($"User with id = {id} has been deleted");
         }
     }
 }
