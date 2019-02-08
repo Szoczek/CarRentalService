@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Model;
 
@@ -9,8 +8,7 @@ namespace WebApi.DataModel
     {
         public Guid Id { get; set; }
         public User User { get; set; }
-        public DocumentTypes DocumentType { get; set; }
-        public IEnumerable<Car> RentedCars { get; set; }
+        public Car RentedCar { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
@@ -19,8 +17,7 @@ namespace WebApi.DataModel
         {
             this.Id = document.Result.Id;
             this.User = document.Result.User;
-            this.DocumentType = document.Result.DocumentType;
-            this.RentedCars = document.Result.RentedCars; 
+            this.RentedCar = document.Result.RentedCar; 
             this.StartDate = document.Result.StartDate;
             this.EndDate = document.Result.EndDate;
 
@@ -31,8 +28,7 @@ namespace WebApi.DataModel
         {
             this.Id = document.Id;
             this.User = document.User;
-            this.DocumentType = document.DocumentType;
-            this.RentedCars = document.RentedCars;
+            this.RentedCar = document.RentedCar;
             this.StartDate = document.StartDate;
             this.EndDate = document.EndDate;
 
@@ -43,8 +39,7 @@ namespace WebApi.DataModel
         {
             document.Id = this.Id;
             document.User = this.User;
-            document.DocumentType = this.DocumentType;
-            document.RentedCars = this.RentedCars;
+            document.RentedCar = this.RentedCar;
             document.StartDate = this.StartDate;
             document.EndDate = this.EndDate;
 

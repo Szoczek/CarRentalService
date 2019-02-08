@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Model;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
-using WebApi.DataModel;
 
 namespace WebApi.Controllers
 {
@@ -24,102 +23,120 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserData>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            IMongoQueryable<User> query;
             try
             {
-                query = _databaseContext.GetCollection<User>().AsQueryable();
+                return await Task.FromResult(_databaseContext.GetCollection<User>()
+                    .AsQueryable()
+                    .ToList());
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            List<UserData> users = new List<UserData>();
-            try
-            {
-                //await Task.FromResult(IAsyncCursorSourceExtensions
-                //   .ForEachAsync(query, x => users.Add(new UserData().InitFrom(x))));
-                foreach (var user in query)
-                {
-                    users.Add(new UserData().InitFrom(user));
-                }
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-
-            return await Task.FromResult(users);
         }
 
-        [HttpGet("{id:Guid}")]
-        public async Task<ActionResult<UserData>> GetUser(Guid id)
+        [Route("api/user/login")]
+        [HttpPost]
+        public ActionResult<string> LoginUser([FromBody]Credentials credentials)
         {
-            if (id == Guid.Empty)
-                return BadRequest("Id must not be empty");
+            if (string.IsNullOrWhiteSpace(credentials.Login) || string.IsNullOrWhiteSpace(credentials.Password))
+                return BadRequest("Login and password cannot be empty!");
 
-            User query;
+            User user;
             try
             {
-                query = await _databaseContext.GetCollection<User>()
-                        .AsQueryable()
-                        .FirstOrDefaultAsync(x => x.Id.Equals(id));
+                user = _databaseContext.GetCollection<User>().AsQueryable()
+                    .FirstOrDefaultAsync(x => x.Login == credentials.Login && x.Password == credentials.Password).Result;
+
+                if (user == null)
+                    return BadRequest("Wrong login or password");
+                else
+                    return user.Login;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+        }
+        [HttpPut("login:required")]
+        public async Task<ActionResult> PutUser(string login, [FromBody]User user)
+        {
+            if (login == string.Empty || user == null)
+                return login == string.Empty && user == null
+                    ? BadRequest("Login must not be empty and user data must not be empty")
+                    : login == string.Empty ? BadRequest("Login must not be empty") : BadRequest("User data must not be empty");
+            try
+            {
+                await _databaseContext.GetCollection<User>()
+                    .FindOneAndReplaceAsync(Builders<User>.Filter.Where(x => x.Login.Equals(login)), user);
+                return Ok($"User {login} modified");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<User>> GetUser(string login)
+        {
+            if (login == string.Empty)
+                return BadRequest("Login must not be empty");
+            try
+            {
+                return await _databaseContext.GetCollection<User>()
+                       .AsQueryable()
+                       .FirstOrDefaultAsync(x => x.Login.Equals(login));
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-
-            if (query == null)
-                return BadRequest("No such user");
-            var user = new UserData();
-
-            return await Task.FromResult(user.InitFrom(query));
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostUser([FromBody] UserData userData)
+        public async Task<ActionResult> PostUser([FromBody] User user)
         {
-            if (userData == null)
-                return BadRequest("User data must not be empty");
+            if (!user.IsValid())
+                return BadRequest("User information invalid");
 
-            userData.Id = Guid.NewGuid();
-            var user = new User();
             try
             {
-                await Task.FromResult(_databaseContext.GetCollection<User>()
-                    .InsertOneAsync(userData.CopyTo(user)));
+                var users = _databaseContext.GetCollection<User>();
+
+                if (users.AsQueryable().AnyAsync(x => x.Login == user.Login).Result)
+                    return BadRequest("Login already taken!");
+
+                user.Id = Guid.NewGuid();
+                await _databaseContext.GetCollection<User>()
+                  .InsertOneAsync(user);
+                return Ok($"User {user.FirstName} {user.LastName} created");
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-
-            return Ok($"User {user.FirstName} {user.LastName} has been created");
         }
 
-        [HttpDelete("{id:Guid}")]
-        public async Task<IActionResult> DeleteUser(Guid id)
+        [HttpDelete("login:required")]
+        public async Task<ActionResult> DeleteUser(string login)
         {
-            if (id == Guid.Empty)
-                return BadRequest("Id must not be empty");
-
-            var filter = Builders<User>.Filter.Where(x => x.Id.Equals(id));
-            if (filter == null)
-                return BadRequest("No such user");
+            if (login == string.Empty)
+                return BadRequest("Login must not be empty");
 
             try
             {
-                await Task.FromResult(_databaseContext.GetCollection<User>()
-                    .DeleteOneAsync(filter));
+                await _databaseContext.GetCollection<User>()
+                   .DeleteOneAsync(Builders<User>.Filter.Where(x => x.Login.Equals(login)));
+                return Ok($"User {login} deleted!");
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-
-            return Ok($"User with id = {id} has been deleted");
         }
     }
 }

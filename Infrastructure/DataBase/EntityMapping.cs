@@ -10,14 +10,14 @@ namespace Infrastructure.Database
             BsonClassMap.RegisterClassMap<User>(x =>
             {
                 x.AutoMap();
-                x.MapIdMember(y => y.Id);
+                x.MapIdMember(y => y.Login);
                 x.SetIgnoreExtraElements(true);
             });
 
             BsonClassMap.RegisterClassMap<Car>(x =>
             {
                 x.AutoMap();
-                x.MapIdMember(y => y.CarGuid);
+                x.MapIdMember(y => y.Id);
                 x.SetIgnoreExtraElements(true);
             });
 
