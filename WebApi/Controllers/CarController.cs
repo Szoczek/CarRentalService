@@ -77,13 +77,14 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody]Car car)
+        public async Task<ActionResult> PostCar([FromBody]Car car)
         {
             if (!car.isValid())
                 return BadRequest("Car is invalid!");
 
             try
             {
+                car.Id = Guid.NewGuid();
                 await _databaseContext.GetCollection<Car>().InsertOneAsync(car);
                 return Ok($"Car {car.Id} created");
             }

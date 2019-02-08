@@ -80,7 +80,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("login:required")]
         public async Task<ActionResult<User>> GetUser(string login)
         {
             if (login == string.Empty)

@@ -20,6 +20,20 @@ namespace WebApi.Controllers
             _databaseContext = new DatabaseContext();
         }
 
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Document>>> GetDocuments()
+        {
+            try
+            {
+                return await Task.FromResult(_databaseContext.GetCollection<Document>()
+                    .AsQueryable()
+                    .ToList());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         [HttpGet("login:required")]
         public async Task<ActionResult<IEnumerable<Document>>> GetUserDocuments(string login)
         {
@@ -63,6 +77,8 @@ namespace WebApi.Controllers
 
             try
             {
+                document.Id = Guid.NewGuid();
+
                 await _databaseContext.GetCollection<Document>()
                 .InsertOneAsync(document);
                 return Ok($"Document {document.Id} created");
