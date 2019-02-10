@@ -9,7 +9,7 @@ using MongoDB.Driver.Linq;
 
 namespace WebApi.Controllers
 {
-    [Route("api/Document")]
+    [Route("api/[controller]")]
     [ApiController]
     public class DocumentController : ControllerBase
     {
@@ -20,60 +20,28 @@ namespace WebApi.Controllers
             _databaseContext = new DatabaseContext();
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Document>>> GetDocuments()
-        {
-            try
-            {
-                return await Task.FromResult(_databaseContext.GetCollection<Document>()
-                    .AsQueryable()
-                    .ToList());
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-        [HttpGet("login:required")]
+        [HttpGet("{login:required}")]
         public async Task<ActionResult<IEnumerable<Document>>> GetUserDocuments(string login)
         {
-            if (string.IsNullOrEmpty(login))
-                return BadRequest("Incorrect login!");
             try
             {
-                return await Task.FromResult(_databaseContext.GetCollection<Document>()
+                var documents = await Task.FromResult(_databaseContext.GetCollection<Document>()
                     .AsQueryable().Where(x => x.User.Login == login)
                     .ToList());
+                return Ok(documents);
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { message = ex.Message });
             }
 
-        }
-
-        [HttpGet("{id:Guid}")]
-        public async Task<ActionResult<Document>> GetDocument(Guid id)
-        {
-            if (id == Guid.Empty)
-                return BadRequest("Id must not be empty!");
-            try
-            {
-                return await _databaseContext.GetCollection<Document>()
-                    .AsQueryable()
-                    .FirstOrDefaultAsync(x => x.Id.Equals(id));
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
         }
 
         [HttpPost]
         public async Task<ActionResult> PostDocument([FromBody] Document document)
         {
             if (!document.isValid())
-                return BadRequest("Document is not valid!");
+                return BadRequest(new { message = "Document is not valid" });
 
             try
             {
@@ -81,40 +49,36 @@ namespace WebApi.Controllers
 
                 await _databaseContext.GetCollection<Document>()
                 .InsertOneAsync(document);
-                return Ok($"Document {document.Id} created");
+                return Ok(new { message = $"Document {document.Id} created" });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 
-        [HttpPut("id:Guid")]
+        [HttpPut("{id:Guid}")]
         public async Task<ActionResult> PutDocument(Guid id, [FromBody] Document document)
         {
-            if (id == Guid.Empty)
-                return BadRequest("Id must not be empty!");
             if (!document.isValid())
-                return BadRequest("Document is invalid!");
+                return BadRequest(new { message = "Document is invalid" });
 
             try
             {
                 await _databaseContext.GetCollection<Document>()
                      .FindOneAndReplaceAsync(Builders<Document>
                      .Filter.Where(x => x.Id.Equals(id)), document);
-                return Ok($"Document {id} modified");
+                return Ok(new { message = $"Document {id} modified" });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 
         [HttpDelete("{id:Guid}")]
         public async Task<ActionResult> DeleteDocument(Guid id)
         {
-            if (id == Guid.Empty)
-                return BadRequest("Id must not be empty!");
             try
             {
 
@@ -122,11 +86,11 @@ namespace WebApi.Controllers
                   .FindOneAndDeleteAsync(Builders<Document>
                   .Filter.Where(x => x.Id.Equals(id)));
 
-                return Ok($"Document {id} deleted!");
+                return Ok(new { message = $"Document {id} deleted" });
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
     }

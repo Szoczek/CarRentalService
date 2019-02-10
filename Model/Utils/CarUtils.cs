@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Model.Utils
 {
@@ -20,7 +17,7 @@ namespace Model.Utils
             return sb.ToString();
         }
 
-        public static char RandomChar()
+        private static char RandomChar()
         {
             Random random = new Random();
 

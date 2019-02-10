@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 
 namespace Model
 {
@@ -11,6 +10,7 @@ namespace Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
+        public string Token { get; set; }
 
         public bool IsValid()
         {
