@@ -9,6 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Threading.Tasks;
 using WebApi.DataModel;
 using WebApi.Helpers;
 
@@ -16,7 +17,7 @@ namespace WebApi.Services
 {
     public interface IUserService
     {
-        User Authenticate(Credentials credentials);
+        Task<User> Authenticate(Credentials credentials);
     }
 
     public class UserService : IUserService
@@ -30,7 +31,7 @@ namespace WebApi.Services
             _appSettings = appSettings.Value;
         }
 
-        public User Authenticate(Credentials credentials)
+        public async  Task<User> Authenticate(Credentials credentials)
         {
             var user = _databaseContext.GetCollection<User>().AsQueryable()
                 .FirstOrDefaultAsync(x => x.Login.Equals(credentials.Login) && x.Password.Equals(credentials.Password)).Result;
@@ -51,6 +52,10 @@ namespace WebApi.Services
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             user.Token = tokenHandler.WriteToken(token);
+
+            await _databaseContext.GetCollection<User>()
+                .FindOneAndReplaceAsync(Builders<User>.Filter
+                .Where(x => x.Login == credentials.Login && x.Password == credentials.Password), user);
 
             user.Password = null;
 

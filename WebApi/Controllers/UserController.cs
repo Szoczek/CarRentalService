@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using Infrastructure.Database;
@@ -51,7 +52,7 @@ namespace WebApi.Controllers
 
         }
 
-        [HttpPut("{login:required}")]
+        [HttpPut("{login}")]
         public async Task<ActionResult<User>> PutUser(string login, [FromBody]User user)
         {
             if (!user.IsValid())
@@ -69,14 +70,17 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpGet("{login:required}")]
+        [HttpGet("{login}")]
         public async Task<ActionResult<User>> GetUser(string login)
         {
             try
             {
-               var user = await _databaseContext.GetCollection<User>()
-                       .AsQueryable()
-                       .FirstOrDefaultAsync(x => x.Login.Equals(login));
+                var user = await _databaseContext.GetCollection<User>()
+                        .AsQueryable()
+                        .FirstOrDefaultAsync(x => x.Login.Equals(login));
+                if (user == null)
+                    return BadRequest(new { message = "User not found" });
+
                 return Ok(user);
             }
             catch (Exception ex)
@@ -110,7 +114,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpDelete("{login:required}")]
+        [HttpDelete("{login}")]
         public async Task<ActionResult> DeleteUser(string login)
         {
             try
