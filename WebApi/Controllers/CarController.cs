@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Model;
 using Model.Utils;
 using MongoDB.Driver;
-using MongoDB.Driver.Linq;
 
 namespace WebApi.Controllers
 {
@@ -25,24 +24,21 @@ namespace WebApi.Controllers
             _databaseContext = new DatabaseContext();
         }
 
-        [HttpGet("{login:required}")]
-        public async Task<ActionResult<IEnumerable<Car>>> GetUserCars(string login)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Car>>> GetCars()
         {
             try
             {
-                var cars = await Task.FromResult(_databaseContext.GetCollection<Document>()
-                    .AsQueryable()
-                    .Where(x => x.User.Login == login)
-                    .Select(x => x.RentedCar)
-                    .ToList());
+                var cars = await Task.FromResult(_databaseContext.GetCollection<Car>().AsQueryable().ToList());
                 return Ok(cars);
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult> PostCar([FromBody]Car car)
         {
@@ -58,7 +54,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
 
@@ -77,7 +73,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
 
@@ -95,7 +91,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
     }

@@ -7,3 +7,12 @@ D:\PROJEKTY\CarRentalService\CarRentalService\Model\obj\Debug\netcoreapp2.1\Mode
 D:\PROJEKTY\CarRentalService\CarRentalService\Model\obj\Debug\netcoreapp2.1\Model.AssemblyInfo.cs
 D:\PROJEKTY\CarRentalService\CarRentalService\Model\obj\Debug\netcoreapp2.1\Model.dll
 D:\PROJEKTY\CarRentalService\CarRentalService\Model\obj\Debug\netcoreapp2.1\Model.pdb
+C:\PROJEKTY\Szkola\CarRentalService\Model\bin\Debug\netcoreapp2.1\Model.deps.json
+C:\PROJEKTY\Szkola\CarRentalService\Model\bin\Debug\netcoreapp2.1\Model.dll
+C:\PROJEKTY\Szkola\CarRentalService\Model\bin\Debug\netcoreapp2.1\Model.pdb
+C:\PROJEKTY\Szkola\CarRentalService\Model\obj\Debug\netcoreapp2.1\Model.csprojAssemblyReference.cache
+C:\PROJEKTY\Szkola\CarRentalService\Model\obj\Debug\netcoreapp2.1\Model.csproj.CoreCompileInputs.cache
+C:\PROJEKTY\Szkola\CarRentalService\Model\obj\Debug\netcoreapp2.1\Model.AssemblyInfoInputs.cache
+C:\PROJEKTY\Szkola\CarRentalService\Model\obj\Debug\netcoreapp2.1\Model.AssemblyInfo.cs
+C:\PROJEKTY\Szkola\CarRentalService\Model\obj\Debug\netcoreapp2.1\Model.dll
+C:\PROJEKTY\Szkola\CarRentalService\Model\obj\Debug\netcoreapp2.1\Model.pdb

@@ -16,3 +16,15 @@ D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\bin\Debug\netcoreap
 D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.csproj.CopyComplete
 D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.dll
 D:\PROJEKTY\CarRentalService\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.pdb
+C:\PROJEKTY\Szkola\CarRentalService\Infrastructure\bin\Debug\netcoreapp2.1\Infrastructure.deps.json
+C:\PROJEKTY\Szkola\CarRentalService\Infrastructure\bin\Debug\netcoreapp2.1\Infrastructure.dll
+C:\PROJEKTY\Szkola\CarRentalService\Infrastructure\bin\Debug\netcoreapp2.1\Infrastructure.pdb
+C:\PROJEKTY\Szkola\CarRentalService\Infrastructure\bin\Debug\netcoreapp2.1\Model.dll
+C:\PROJEKTY\Szkola\CarRentalService\Infrastructure\bin\Debug\netcoreapp2.1\Model.pdb
+C:\PROJEKTY\Szkola\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.csprojAssemblyReference.cache
+C:\PROJEKTY\Szkola\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.csproj.CoreCompileInputs.cache
+C:\PROJEKTY\Szkola\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.AssemblyInfoInputs.cache
+C:\PROJEKTY\Szkola\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.AssemblyInfo.cs
+C:\PROJEKTY\Szkola\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.csproj.CopyComplete
+C:\PROJEKTY\Szkola\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.dll
+C:\PROJEKTY\Szkola\CarRentalService\Infrastructure\obj\Debug\netcoreapp2.1\Infrastructure.pdb

@@ -28,7 +28,6 @@ namespace WebApi.Controllers
             _databaseContext = new DatabaseContext();
             _userService = userService;
         }
-
         [AllowAnonymous]
         [HttpPost("login")]
         public ActionResult<User> LoginUser([FromBody]Credentials credentials)
@@ -40,14 +39,14 @@ namespace WebApi.Controllers
             {
                 var user = _userService.Authenticate(credentials);
 
-                if (user == null)
+                if (user.Result == null)
                     return BadRequest(new { message = "login or password is incorrect" });
                 else
-                    return Ok(user);
+                    return Ok(user.Result);
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
 
         }
@@ -61,12 +60,12 @@ namespace WebApi.Controllers
             try
             {
                 await _databaseContext.GetCollection<User>()
-                    .FindOneAndReplaceAsync(Builders<User>.Filter.Where(x => x.Login.Equals(user.Login)), user);
+                    .FindOneAndReplaceAsync(Builders<User>.Filter.Where(x => x.Login.Equals(login)), user);
                 return Ok(user);
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
 
@@ -85,7 +84,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
 
@@ -108,9 +107,9 @@ namespace WebApi.Controllers
                   .InsertOneAsync(user);
                 return Ok(new { message = $"{user.FirstName} {user.LastName} created" });
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(new { message = e.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
 
@@ -125,7 +124,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
     }

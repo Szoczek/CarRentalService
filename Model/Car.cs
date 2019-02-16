@@ -10,7 +10,6 @@ namespace Model
         public string Model { get; set; }
         public double EngineVolume { get; set; }
         public int EngineHp { get; set; }
-        public Color Color { get; set; }
         public int NumberOfDoors { get; set; }
         public string VinNumber { get; set; }
         public DateTime ProductionDate { get; set; }

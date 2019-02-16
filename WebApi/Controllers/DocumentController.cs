@@ -22,7 +22,7 @@ namespace WebApi.Controllers
             _databaseContext = new DatabaseContext();
         }
 
-        [HttpGet("{login:required}")]
+        [HttpGet("{login}")]
         public async Task<ActionResult<IEnumerable<Document>>> GetUserDocuments(string login)
         {
             try
@@ -34,7 +34,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
 
         }
@@ -55,7 +55,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
 
@@ -74,7 +74,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
 
@@ -92,7 +92,7 @@ namespace WebApi.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
     }

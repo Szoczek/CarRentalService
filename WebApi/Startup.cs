@@ -78,6 +78,12 @@ namespace WebApi
             builder.AllowAnyHeader()
             .AllowAnyMethod().AllowAnyOrigin());
 
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=Home}/{id?}");
+            });
+
+
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 

@@ -57,8 +57,6 @@ namespace WebApi.Services
                 .FindOneAndReplaceAsync(Builders<User>.Filter
                 .Where(x => x.Login == credentials.Login && x.Password == credentials.Password), user);
 
-            user.Password = null;
-
             return user;
         }
     }
